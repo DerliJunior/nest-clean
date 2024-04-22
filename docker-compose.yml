@@ -1,0 +1,15 @@
+services:
+  postgress:
+    image: postgres:12
+    container_name: nest-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    # Onde os dados do banco serão persistidos fora do container - Opcional
+    volumes:
+      - ./data/pg:/data/postgres
+    env_file:
+      - .env
